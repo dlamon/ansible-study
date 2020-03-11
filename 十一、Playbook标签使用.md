@@ -197,11 +197,11 @@ tasks:
 
 另外还有三个特殊标签，如下：
 
-标签 | 说明
-- | -
-tagged | 运行有 tags 的任务
-untagged | 运行没有 tags 的任务
-all | 运行所有任务
+| 标签 | 说明 |
+| :- | :- |
+| tagged | 运行有 tags 的任务 |
+| untagged | 运行没有 tags 的任务 |
+| all | 运行所有任务 |
 
 ## 6、官方文档参考
 

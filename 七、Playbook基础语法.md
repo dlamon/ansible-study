@@ -18,27 +18,27 @@ ansible-playbook xxx.yml [options]
 - 绿色：表示执行成功
 
 详细的 options 参数如下表：
-缩写参数 | 完整参数 | 说明
-- | - | -
--u <font size=2>*REMOTE_USER*</font> | --user=<font size=2>*REMOTE_USER*</font> | <font size=2>ssh 连接的用户名</font>
- -k | --ask-pass | <font size=2>ssh 登录认证密码</font>
- -s | --sudo |  <font size=2>sudo 到root用户</font>
- -U <font size=2>*SUDO_USER*</font> | --sudo-user=<font size=2>*SUDO_USER*</font> | <font size=2>sudo 到对应的用户</font>
- -K | --ask-sudo-pass | <font size=2>用户的密码（-sudo时使用)</font>
- -T <font size=2>*TIMEOUT*</font> | --timeout=<font size=2>*TIMEOUT*</font> | <font size=2>ssh 连接超时，默认 10 秒</font>
- -C | --check | <font size=2>指定该参数后，执行 playbook 文件不会真正去执行，而是模拟执行一遍，然后输出本次执行会对远程主机造成的修改</font>
- -e <font size=2>*EXTRA_VARS*</font> | --extra-vars=<font size=2>*EXTRA_VARS*</font> | <font size=2>设置额外的变量如：key=value 形式 或者 YAML or JSON，以空格分隔变量，或用多个-e</font>
- -f <font size=2>*FORKS*</font> | --forks=<font size=2>*FORKS*</font> | <font size=2>进程并发处理，默认 5</font>
- -i <font size=2>*INVENTORY*</font> | --inventory-file=<font size=2>*INVENTORY* | <font size=2>指定 hosts 文件路径，默认 /etc/ansible/hosts</font>
- -l <font size=2>*SUBSET*</font> | --limit=<font size=2>*SUBSET*</font> | <font size=2>指定一个 pattern，对- hosts:匹配到的主机再过滤一次</font>
-- | --list-hosts | <font size=2>输出所属主机列表</font>
-- | --list-tasks | <font size=2>输出所属任务列表</font>
-- | --private-key=<font size=2>*PRIVATE_KEY_FILE* | <font size=2>私钥路径</font>
-- | --step | <font size=2>同一时间只执行一个 task，每个 task 执行前都会提示确认一遍</font>
-- | --syntax-check | <font size=2>只检测 playbook 文件语法是否有问题，不会执行该 playbook</font>
- -t <font size=2>*TAGS* | --tags=<font size=2>*TAGS* | <font size=2>当 play 和 task 的 tag 为该参数指定的值时才执行，多个 tag 以逗号分隔</font>
-- | --skip-tags=<font size=2>*SKIP_TAGS* | <font size=2>当 play 和 task 的 tag 不匹配该参数指定的值时，才执行</font>
- -v | --verbose | <font size=2>输出更详细的执行过程信息，-vvv可得到所有执行过程信息</font>
+| 缩写参数 | 完整参数 | 说明 |
+| :- | :- | :- |
+| -u <font size=2>*REMOTE_USER*</font> | --user=<font size=2>*REMOTE_USER*</font> | <font size=2>ssh 连接的用户名</font> |
+| -k | --ask-pass | <font size=2>ssh 登录认证密码</font> |
+| -s | --sudo |  <font size=2>sudo 到root用户</font> |
+| -U <font size=2>*SUDO_USER*</font> | --sudo-user=<font size=2>*SUDO_USER*</font> | <font size=2>sudo 到对应的用户</font> |
+| -K | --ask-sudo-pass | <font size=2>用户的密码（-sudo时使用)</font> |
+| -T <font size=2>*TIMEOUT*</font> | --timeout=<font size=2>*TIMEOUT*</font> | <font size=2>ssh 连接超时，默认 10 秒</font> |
+| -C | --check | <font size=2>指定该参数后，执行 playbook 文件不会真正去执行，而是模拟执行一遍，然后输出本次执行会对远程主机造成的修改</font> |
+| -e <font size=2>*EXTRA_VARS*</font> | --extra-vars=<font size=2>*EXTRA_VARS*</font> | <font size=2>设置额外的变量如：key=value 形式 或者 YAML or JSON，以空格分隔变量，或用多个-e</font> |
+| -f <font size=2>*FORKS*</font> | --forks=<font size=2>*FORKS*</font> | <font size=2>进程并发处理，默认 5</font> |
+| -i <font size=2>*INVENTORY*</font> | --inventory-file=<font size=2>*INVENTORY* | <font size=2>指定 hosts 文件路径，默认 /etc/ansible/hosts</font> |
+| -l <font size=2>*SUBSET*</font> | --limit=<font size=2>*SUBSET*</font> | <font size=2>指定一个 pattern，对- hosts:匹配到的主机再过滤一次</font> |
+| - | --list-hosts | <font size=2>输出所属主机列表</font> |
+| - | --list-tasks | <font size=2>输出所属任务列表</font> |
+| - | --private-key=<font size=2>*PRIVATE_KEY_FILE* | <font size=2>私钥路径</font> |
+| - | --step | <font size=2>同一时间只执行一个 task，每个 task 执行前都会提示确认一遍</font> |
+| - | --syntax-check | <font size=2>只检测 playbook 文件语法是否有问题，不会执行该 playbook</font> |
+| -t <font size=2>*TAGS* | --tags=<font size=2>*TAGS* | <font size=2>当 play 和 task 的 tag 为该参数指定的值时才执行，多个 tag 以逗号分隔</font> |
+| - | --skip-tags=<font size=2>*SKIP_TAGS* | <font size=2>当 play 和 task 的 tag 不匹配该参数指定的值时，才执行</font> |
+| -v | --verbose | <font size=2>输出更详细的执行过程信息，-vvv可得到所有执行过程信息</font> |
 
  如果需要了解 yaml 语法格式，请参考 [YAML Syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
 

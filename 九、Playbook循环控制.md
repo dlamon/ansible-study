@@ -169,19 +169,19 @@ until retries 的默认值为 3，delay 为 5。
 
 ## 7、旧循环语句列表
 
-循环语句 | 说明
-- | -
-with_items | 标准循环
-with_dict | 遍历字典
-with_fileglob | 遍历目录
-with_nested | 嵌套循环
-with_together | 并行遍历列表
-with_indexed_items | 遍历列表和索引
-with_file | 遍历文件列表的内容
-with_first_found | 查找第一个匹配文件
-with_random_choice | 随机选择
-with_sequence | 在序列中循环
-until | 循环重试
+| 循环语句 | 说明 |
+| :- | :- |
+| with_items | 标准循环 |
+| with_dict | 遍历字典 |
+| with_fileglob | 遍历目录 |
+| with_nested | 嵌套循环 |
+| with_together | 并行遍历列表 |
+| with_indexed_items | 遍历列表和索引 |
+| with_file | 遍历文件列表的内容 |
+| with_first_found | 查找第一个匹配文件 |
+| with_random_choice | 随机选择 |
+| with_sequence | 在序列中循环 |
+| until | 循环重试 |
 
 ## 8、官方文档参考
 

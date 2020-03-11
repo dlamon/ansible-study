@@ -154,20 +154,20 @@ ansible-doc -l
 
 ## 2.2、常用模块
 
-模块 | 归类 | 用途 | 示例
-- | - | - | -
-command | 指令 | 默认模块 | ansible 172.17.0.3 -a "/sbin/reboot"
-shell | 指令 | 执行shell指令 | ansible 172.17.0.3 -m shell "echo $JAVA_HOME"
-script | 指令 | 在远程机器执行shell脚本，脚本无需在远程机器上存在 | ansible 172.17.0.3 -m script -a '/deploy/server/startup.sh'
-file | 文件 | 创建，删除文件（夹）及权限控制| ansible 172.17.0.3 -m file -a 'path=/home/deploy/downloads state=directory'
-copy | 文件 | 复制本地文件到远程主机 | ansible 172.17.0.3 -m copy -a 'src=/deploy/version/server.tar dest=/deploy/server/server.tar'
-fetch | 文件 | 从远程机器上面拉取文件到本地 | ansible 172.17.0.3 -m fetch -a 'src=/deploy/logs dest=/logs'
-user | 用户 | 创建、删除用户 | ansible 172.17.0.3 -m user -a 'name=test password=123456'
-group | 用户 | 创建、删除用户组 | ansible 172.17.0.3 -m group -a 'name=test'
-yum | 安装 | 在centos系统上安装软件 | ansible 172.17.0.3 -m yum -a 'name=httpd state=installed'
-service | 服务 | 服务的启动、关闭、开机自启 | ansible 172.17.0.3 -m service -a 'name=nginx state=started enabled=yes'
-cron | 定时任务 | 在远程主机上指定定时任务 | ansible 172.17.0.3 -m cron -a "name='clear data' minute=* hour=* day=* month=* weekday=* job='/bin/bash /deploy/clean.sh'"
-setup | 收集 | 获取系统信息 | ansible 172.17.0.3 -m setup
+| 模块 | 归类 | 用途 | 示例 |
+| :- | :- | :- | :- |
+| command | 指令 | 默认模块 | ansible 172.17.0.3 -a "/sbin/reboot" |
+| shell | 指令 | 执行shell指令 | ansible 172.17.0.3 -m shell "echo $JAVA_HOME" |
+| script | 指令 | 在远程机器执行shell脚本，脚本无需在远程机器上存在 | ansible 172.17.0.3 -m script -a '/deploy/server/startup.sh' |
+| file | 文件 | 创建，删除文件（夹）及权限控制| ansible 172.17.0.3 -m file -a 'path=/home/deploy/downloads state=directory' |
+| copy | 文件 | 复制本地文件到远程主机 | ansible 172.17.0.3 -m copy -a 'src=/deploy/version/server.tar dest=/deploy/server/server.tar' |
+| fetch | 文件 | 从远程机器上面拉取文件到本地 | ansible 172.17.0.3 -m fetch -a 'src=/deploy/logs dest=/logs' |
+| user | 用户 | 创建、删除用户 | ansible 172.17.0.3 -m user -a 'name=test password=123456' |
+| group | 用户 | 创建、删除用户组 | ansible 172.17.0.3 -m group -a 'name=test' |
+| yum | 安装 | 在centos系统上安装软件 | ansible 172.17.0.3 -m yum -a 'name=httpd state=installed' |
+| service | 服务 | 服务的启动、关闭、开机自启 | ansible 172.17.0.3 -m service -a 'name=nginx state=started enabled=yes' |
+| cron | 定时任务 | 在远程主机上指定定时任务 | ansible 172.17.0.3 -m cron -a "name='clear data' minute=* hour=* day=* month=* weekday=* job='/bin/bash /deploy/clean.sh'" |
+| setup | 收集 | 获取系统信息 | ansible 172.17.0.3 -m setup |
 
 command 和 shell 区别和总结：
 
@@ -182,29 +182,29 @@ command 和 shell 区别和总结：
 
 ## 2.3、ad-hoc 常用参数介绍
 
-缩写参数 | 完整参数 | 说明
-- | - | -
--v | --verbose | <font size=2>输出更详细的执行过程信息，-vvv可得到所有执行过程信息</font>
--i <font size=2>*PATH*</font> | --inventory=<font size=2>*PATH*</font> | <font size=2>指定inventory信息，默认/etc/ansible/hosts</font>
--f <font size=2>*NUM*</font> | --forks=<font size=2>*NUM*</font> | <font size=2>并发线程数，默认5个线程</font>
---private-key=<font size=2>*PRIVATE_KEY_FILE*</font> | | <font size=2>指定密钥文件</font>
--m <font size=2>*NAME*</font> | --module-name=<font size=2>*NAME*</font> | <font size=2>指定执行使用的模块</font>
--M <font size=2>*DIRECTORY*</font> | --module-path=<font size=2>*DIRECTORY*</font> | <font size=2>指定模块存放路径，默认/usr/share/ansible，也可以通过ANSIBLE_LIBRARY设定默认路径</font>
--a <font size=2>*'ARGUMENTS'*</font> | --args=<font size=2>*'ARGUMENTS'*</font> | <font size=2>模块参数</font>
--k | --ask-pass <font size=2>*SSH*</font> | <font size=2>认证密码</font>
--K | --ask-sudo-pass <font size=2>*sudo*</font> | <font size=2>用户的密码（—sudo时使用）</font>
--o | --one-line | <font size=2>标准输出至一行</font>
--s | --sudo | <font size=2>相当于Linux系统下的sudo命令</font>
--t <font size=2>*DIRECTORY*</font> | --tree=<font size=2>*DIRECTORY*</font> | <font size=2>输出信息至DIRECTORY目录下，结果文件以远程主机名命名</font>
--T <font size=2>*SECONDS*</font> | --timeout=<font size=2>*SECONDS*</font> | <font size=2>指定连接远程主机的最大超时，单位是：秒</font>
--B <font size=2>*NUM*</font> | --background=<font size=2>*NUM*</font> | <font size=2>后台执行命令，超NUM秒后kill正在执行的任务</font>
--P <font size=2>*NUM*</font> | --poll=<font size=2>*NUM*</font> | <font size=2>定期返回后台任务进度</font>
--u <font size=2>*USERNAME*</font> | --user=<font size=2>*USERNAME*</font> | <font size=2>指定远程主机以USERNAME运行命令</font>
--U <font size=2>*SUDO_USERNAME*</font> | --sudo-user=<font size=2>*SUDO_USERNAME*</font> | <font size=2>使用sudo，相当于Linux下的sudo命令</font>
--c <font size=2>*CONNECTION*</font> | --connection=<font size=2>*CONNECTION*</font> | <font size=2>指定连接方式，可用选项paramiko (SSH), ssh, local。Local方式常用于crontab 和 kickstarts</font>
--l <font size=2>*SUBSET*</font> | --limit=<font size=2>*SUBSET*</font> | <font size=2>指定运行主机</font>
--l <font size=2>*~REGEX*</font> | --limit=<font size=2>*~REGEX*</font> | <font size=2>指定运行主机（正则）</font>
---list-hosts | |<font size=2>列出符合条件的主机列表,不执行任何其他命令</font>
+| 缩写参数 | 完整参数 | 说明 |
+| :- | :- | :- |
+| -v | --verbose | <font size=2>输出更详细的执行过程信息，-vvv可得到所有执行过程信息</font> |
+| -i <font size=2>*PATH*</font> | --inventory=<font size=2>*PATH*</font> | <font size=2>指定inventory信息，默认/etc/ansible/hosts</font> |
+| -f <font size=2>*NUM*</font> | --forks=<font size=2>*NUM*</font> | <font size=2>并发线程数，默认5个线程</font> |
+| --private-key=<font size=2>*PRIVATE_KEY_FILE*</font> | | <font size=2>指定密钥文件</font> |
+| -m <font size=2>*NAME*</font> | --module-name=<font size=2>*NAME*</font> | <font size=2>指定执行使用的模块</font> |
+| -M <font size=2>*DIRECTORY*</font> | --module-path=<font size=2>*DIRECTORY*</font> | <font size=2>指定模块存放路径，默认/usr/share/ansible，也可以通过ANSIBLE_LIBRARY设定默认路径</font> |
+| -a <font size=2>*'ARGUMENTS'*</font> | --args=<font size=2>*'ARGUMENTS'*</font> | <font size=2>模块参数</font> |
+| -k | --ask-pass <font size=2>*SSH*</font> | <font size=2>认证密码</font> |
+| -K | --ask-sudo-pass <font size=2>*sudo*</font> | <font size=2>用户的密码（—sudo时使用）</font> |
+| -o | --one-line | <font size=2>标准输出至一行</font> |
+| -s | --sudo | <font size=2>相当于Linux系统下的sudo命令</font> |
+| -t <font size=2>*DIRECTORY*</font> | --tree=<font size=2>*DIRECTORY*</font> | <font size=2>输出信息至DIRECTORY目录下，结果文件以远程主机名命名</font> |
+| -T <font size=2>*SECONDS*</font> | --timeout=<font size=2>*SECONDS*</font> | <font size=2>指定连接远程主机的最大超时，单位是：秒</font> |
+| -B <font size=2>*NUM*</font> | --background=<font size=2>*NUM*</font> | <font size=2>后台执行命令，超NUM秒后kill正在执行的任务</font> |
+| -P <font size=2>*NUM*</font> | --poll=<font size=2>*NUM*</font> | <font size=2>定期返回后台任务进度</font> |
+| -u <font size=2>*USERNAME*</font> | --user=<font size=2>*USERNAME*</font> | <font size=2>指定远程主机以USERNAME运行命令</font> |
+| -U <font size=2>*SUDO_USERNAME*</font> | --sudo-user=<font size=2>*SUDO_USERNAME*</font> | <font size=2>使用sudo，相当于Linux下的sudo命令</font> |
+| -c <font size=2>*CONNECTION*</font> | --connection=<font size=2>*CONNECTION*</font> | <font size=2>指定连接方式，可用选项paramiko (SSH), ssh, local。Local方式常用于crontab 和 kickstarts</font> |
+| -l <font size=2>*SUBSET*</font> | --limit=<font size=2>*SUBSET*</font> | <font size=2>指定运行主机</font> |
+| -l <font size=2>*~REGEX*</font> | --limit=<font size=2>*~REGEX*</font> | <font size=2>指定运行主机（正则）</font> |
+| --list-hosts | |<font size=2>列出符合条件的主机列表,不执行任何其他命令</font> |
 
 ## 3、官方文档参考
 

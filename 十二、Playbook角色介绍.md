@@ -66,10 +66,9 @@ roles/
 └── site.yml
 ```
 
-site.yml文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -78,10 +77,9 @@ site.yml文件：
     - server
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task 1
   debug:
     msg: "font task 1"
@@ -90,10 +88,9 @@ roles/font/tasks/main.yml
     msg: "font task 2"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task 1
   debug:
     msg: "server task 1"
@@ -129,10 +126,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -141,10 +137,9 @@ site.yml文件：
     - server
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task 1
   debug:
     msg: "font task 1"
@@ -153,17 +148,15 @@ roles/font/tasks/main.yml
     msg: "{{ font_port }}"
 ```
 
-roles/font/vars/main.yml
-
 ```yml
 ---
+# file: roles/font/vars/main.yml
 font_port: 8080
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task 1
   debug:
     msg: "server task 1"
@@ -172,10 +165,9 @@ roles/server/tasks/main.yml
     msg: "{{ server_port }}"
 ```
 
-roles/server/vars/main.yml
-
 ```yml
 ---
+# file: roles/server/vars/main.yml
 server_port: 20080
 ```
 
@@ -208,10 +200,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -220,39 +211,35 @@ site.yml文件：
     - server
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task 1
   shell: "cat ~/test.log"
   notify:
     - restart font
 ```
 
-roles/font/handlers/main.yml
-
 ```yml
 ---
+# file: roles/font/handlers/main.yml
 - name: restart font
   debug:
     msg: "restart font handler"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task 1
   shell: "cat ~/test.log"
   notify:
     - restart server
 ```
 
-roles/server/handlers/main.yml
-
 ```yml
 ---
+# file: roles/server/handlers/main.yml
 - name: restart server
   debug:
     msg: "restart server handler"
@@ -285,10 +272,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -296,28 +282,25 @@ site.yml文件：
     - server
 ```
 
-roles/db/tasks/main.yml
-
 ```yml
 ---
+# file: roles/db/tasks/main.yml
 - name: db task
   debug:
     msg: "db task"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task
   debug:
     msg: "server task"
 ```
 
-roles/server/meta/main.yml
-
 ```yml
 ---
+# file: roles/server/meta/main.yml
 dependencies:
   - role: db
 ```
@@ -345,10 +328,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -382,19 +364,17 @@ site.yml文件：
         msg: "post task handler"
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task
   debug:
     msg: "font task"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task
   debug:
     msg: "server task"
@@ -437,10 +417,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml 文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -455,19 +434,17 @@ site.yml 文件：
         msg: "after we ran our role"
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task
   debug:
     msg: "font task"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task
   debug:
     msg: "server task"
@@ -496,10 +473,9 @@ ansible-playbook -i ./hosts ./site.yml
 └── site.yml
 ```
 
-site.yml 文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -512,19 +488,17 @@ site.yml 文件：
       when: target == "server" or target == "all"
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task
   debug:
     msg: "font task"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task
   debug:
     msg: "server task"
@@ -561,10 +535,9 @@ ansible-playbook -i ./hosts ./site.yml -e "target=all"
 └── site.yml
 ```
 
-site.yml 文件：
-
 ```yml
 ---
+# file: site.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -577,19 +550,17 @@ site.yml 文件：
       tags: server
 ```
 
-roles/font/tasks/main.yml
-
 ```yml
 ---
+# file: roles/font/tasks/main.yml
 - name: font task
   debug:
     msg: "font task"
 ```
 
-roles/server/tasks/main.yml
-
 ```yml
 ---
+# file: roles/server/tasks/main.yml
 - name: server task
   debug:
     msg: "server task"

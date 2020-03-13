@@ -54,6 +54,7 @@ log_path = ~/ansible/log/ansible.log
 在ansible目录中创建hosts文件，文件内容如下：
 
 ```ini
+# file: hosts
 172.17.0.3
 172.17.0.4
 172.17.0.5
@@ -75,7 +76,7 @@ ansible all --list-hosts
 如果输出一下内容，则配置成功：
 
 ```output
-hosts (2):
+  hosts (3):
     172.17.0.3
     172.17.0.4
     172.17.0.5

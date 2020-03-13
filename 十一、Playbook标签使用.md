@@ -6,6 +6,7 @@
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -76,6 +77,7 @@ tags 标签可以用于任务以外的地方，tags 标签下的所有任务都�
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -120,6 +122,7 @@ ansible-playbook -i ./hosts ./test.yml --tags="task2"
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -167,6 +170,7 @@ roles:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no

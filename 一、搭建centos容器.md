@@ -5,6 +5,7 @@
 使用 *Dockerfile* 基于 *centos:centos7.7.1908* 版本创建自定义 centos 镜像
 
 ```Dockerfile
+# 自定义centos:deploy镜像
 FROM centos:centos7.7.1908
 # 创建维护者信息
 LABEL maintainer="LiaoWei"

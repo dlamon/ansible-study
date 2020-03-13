@@ -91,6 +91,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -112,6 +113,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -141,6 +143,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -174,6 +177,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -199,6 +203,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -235,6 +240,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -256,6 +262,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -281,6 +288,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   vars:
@@ -306,6 +314,7 @@ tasks:
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no

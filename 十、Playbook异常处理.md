@@ -7,6 +7,7 @@ Playbook 默认会停止在任务失败的主机上执行任何其他步骤。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -25,6 +26,7 @@ Playbook 默认会停止在任务失败的主机上执行任何其他步骤。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -41,6 +43,7 @@ Playbook 默认会停止在任务失败的主机上执行任何其他步骤。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -61,6 +64,7 @@ Playbook 默认会停止在任务失败的主机上执行任何其他步骤。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -80,6 +84,7 @@ any_errors_fatal 可以用于单个任务，也可以用于整个任务列表：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -96,6 +101,7 @@ any_errors_fatal 可以用于单个任务，也可以用于整个任务列表：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -112,6 +118,7 @@ any_errors_fatal 可以用于单个任务，也可以用于整个任务列表：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -130,6 +137,7 @@ any_errors_fatal 可以用于单个任务，也可以用于整个任务列表：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -150,6 +158,7 @@ any_errors_fatal 可以用于单个任务，也可以用于整个任务列表：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -173,6 +182,7 @@ block 还可以和 when 一起使用，判断多个符合条件的任务：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no

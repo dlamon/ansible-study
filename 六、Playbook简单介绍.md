@@ -14,6 +14,7 @@ Playbook结构：
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: root
 

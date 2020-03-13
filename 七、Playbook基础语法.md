@@ -50,6 +50,7 @@ ansible-playbook xxx.yml [options]
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: root
 ```
@@ -64,6 +65,7 @@ remote_user：登录远程机器的用户。
 
 ```yml
 ---
+# file: test.yml
 - hosts: all
   order: sorted
 ```
@@ -82,6 +84,7 @@ remote_user 可以定义在每个任务中，以便在不同任务中切换用�
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: root
   tasks:
@@ -94,6 +97,7 @@ become 也可以用来进行用户切换,将 deploy 用户切换为root用户：
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: deploy
   become: yes
@@ -103,6 +107,7 @@ become 可以使用 become_method 指定权限切换方式（su，sudo）：
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: deploy
   tasks:
@@ -117,6 +122,7 @@ become 可以使用 become_user 指定切换后的用户（不指定默认切换
 
 ```yml
 ---
+# file: test.yml
 - hosts: webservers
   remote_user: deploy
   become: yes
@@ -131,6 +137,7 @@ become 可以使用 become_user 指定切换后的用户（不指定默认切换
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   tasks:
     - name: make sure apache is running
@@ -151,6 +158,7 @@ become 可以使用 become_user 指定切换后的用户（不指定默认切换
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -168,6 +176,7 @@ become 可以使用 become_user 指定切换后的用户（不指定默认切换
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -186,7 +195,8 @@ ansible-playbook -i ./test.yml -e "file_name=test.log"
 
 hosts 资产清单文件：
 
-```yml
+```ini
+# file: hosts
 172.17.0.3 file_name=test03.log
 172.17.0.4 file_name=test04.log
 ```
@@ -195,6 +205,7 @@ playbook 文件：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3,172.17.0.4
   remote_user: deploy
   gather_facts: no
@@ -211,7 +222,8 @@ ansible-playbook -i ./hosts ./test.yml
 
 如果资产清单以组的方式配置，则配置变量如下：
 
-```yml
+```ini
+# file: hosts
 [sc]
 172.17.0.3
 172.17.0.4
@@ -224,6 +236,7 @@ file_name=test.log
 
 ```yml
 ---
+# file: test.yml
 - hosts: sc
   remote_user: deploy
   vars:
@@ -239,6 +252,7 @@ file_name=test.log
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -257,6 +271,7 @@ post_tasks 在所有任务执行后执行。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -288,6 +303,7 @@ handlers 知识点：
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no

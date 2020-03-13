@@ -41,6 +41,7 @@ one*.com:dbservers
 模式的编写依赖于资产清单文件的编写，模式必须符合资产清单文件的语法，例如资产清单文件如下：
 
 ```ini
+# file: hosts
 [sc]
 centos01 ansible_host=172.17.0.3
 ```
@@ -80,6 +81,7 @@ websersvers:!{{ excluded }}:&{{ required }}
 如果定义了以下组：
 
 ```ini
+# file: hosts
 [servers]
 172.17.0.3
 172.17.0.4

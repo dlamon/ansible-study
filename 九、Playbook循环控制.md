@@ -15,6 +15,7 @@ We have not deprecated the use of with_<lookup> - that syntax will still be vali
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -40,6 +41,7 @@ We have not deprecated the use of with_<lookup> - that syntax will still be vali
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -59,6 +61,7 @@ We have not deprecated the use of with_<lookup> - that syntax will still be vali
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -101,6 +104,7 @@ until retries 的默认值为 3，delay 为 5。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -118,6 +122,7 @@ until retries 的默认值为 3，delay 为 5。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -135,6 +140,7 @@ until retries 的默认值为 3，delay 为 5。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no
@@ -151,6 +157,7 @@ until retries 的默认值为 3，delay 为 5。
 
 ```yml
 ---
+# file: test.yml
 - hosts: 172.17.0.3
   remote_user: deploy
   gather_facts: no

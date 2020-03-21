@@ -123,7 +123,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - /Users/liaowei/Work/docker/nginx/file-server/nginx.conf:/etc/nginx/nginx.conf:ro
       - /Users/liaowei/Work/docker/nginx/file-server/site:/var/site
@@ -182,7 +182,13 @@ http {
 docker-compose up -d
 ```
 
-## 4、应用服务器列表
+## 4、搭建主控服务器
+
+```shell
+docker run --privileged -itd --name ansible-deploy-master -p 20022:22 --network ansible-example centos:deploy
+```
+
+## 5、应用服务器列表
 
 | 应用名称 | 服务器域名 | 服务器数量 | 所属机房 |
 | :- | :- | :-: | :- |
@@ -194,7 +200,7 @@ docker-compose up -d
 | 后端服务 | ansible-server-zb1| 1 | 灾备 |
 | 后端管理控制台 | ansible-server-admin | 1 | 生产 |
 
-## 5、搭建应用服务器容器
+## 6、搭建应用服务器容器
 
 搭建前端应用服务器容器：
 
@@ -230,7 +236,16 @@ docker run --privileged -itd --name ansible-server-zb1 -p 20004:20000 --network 
 docker run --privileged -itd --name ansible-server-admin -p 21080:21080 --network ansible-example centos:deploy
 ```
 
-## 6、配置资产清单文件
+## 7、配置应用服务器私钥
+
+建立 rsa-private-tools 文件夹：
+```ini
+
+# 
+
+```
+
+## 8、配置资产清单文件
 
 ```ini
 [sc_front]

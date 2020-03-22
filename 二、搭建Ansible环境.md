@@ -58,6 +58,13 @@ ansible 2.9.3
   python version = 2.7.5 (default, Aug  7 2019, 00:51:29) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
 ```
 
+如果安装的 ansible 版本为 2.4.2，建议升级到 2.9.X，方法如下：
+
+```shell
+yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum update ansible -y
+```
+
 ### 2.2、配置 SSH 免密登录
 
 #### 假定容器IP地址列表

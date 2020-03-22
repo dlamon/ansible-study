@@ -195,6 +195,7 @@ bar_agent_port: 99
 ```
 
 ```yml
+---
 # file: webservers.yml
 - hosts: webservers
   roles:

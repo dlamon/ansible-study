@@ -21,7 +21,7 @@ RUN echo 'deploy:deploy123' | chpasswd
 RUN echo 'deploy ALL=(ALL) ALL'>> /etc/sudoers
 # 安装系统软件
 RUN yum update -y
-RUN yum install sudo wget net-tools tree unzip initscripts openssh-server openssh-clients -y
+RUN yum install sudo wget net-tools tree zip unzip initscripts openssh-server openssh-clients -y
 # 配置CMD
 CMD ["/usr/sbin/init"]
 ```

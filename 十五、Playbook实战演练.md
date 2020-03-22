@@ -182,11 +182,13 @@ http {
 docker-compose up -d
 ```
 
-## 4、搭建主控服务器
+## 4、搭建管理主机
 
 ```shell
 docker run --privileged -itd --name ansible-deploy-master -p 20022:22 --network ansible-example centos:deploy
 ```
+
+管理主机需要安装 ansible，可以参考 **二、搭建Ansible 环境 2.1、安装Ansible**
 
 ## 5、应用服务器列表
 
@@ -236,18 +238,83 @@ docker run --privileged -itd --name ansible-server-zb1 -p 20004:20000 --network 
 docker run --privileged -itd --name ansible-server-admin -p 21080:21080 --network ansible-example centos:deploy
 ```
 
-## 7、配置应用服务器私钥
+## 7、复制管理主机公钥
 
-建立 rsa-private-tools 文件夹：
+在管理主机 deploy 用户目录 建立 ansible-rsa-tool 文件夹，文件夹结构如下：
+
 ```ini
-
-# 
-
+.
+├── ansible.cfg
+├── authkey.yml
+├── production
+│   ├── group_vars
+│   │   └── servers.yml
+│   └── hosts
+├── roles
+│   └── common
+│       └── tasks
+│           └── main.yml
+└── site.yml
 ```
+
+关键配置如下：
+
+```yml
+---
+# file: roles/common/tasks/main.yml
+- name: 复制管理主机公钥到托管节点
+  authorized_key:
+    user: deploy
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  tags: copy
+- name: 移除托管节点上管理主机公钥
+  authorized_key:
+    user: deploy
+    state: absent
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  tags: remove
+```
+
+配置密钥使用了 ansible 的 authorized_key 模块，上述配置支持公钥的添加和删除。
+
+在 ansible-rsa-tool 执行命令如下：
+
+```shell
+# 在管理主机上产生公私钥
+ssh-keygen
+```
+
+```shell
+# 复制管理主机公钥到托管节点
+ansible-playbook -i production site.yml --tags="copy"
+```
+
+```shell
+# 移除托管节点上管理主机公钥
+ansible-playbook -i production site.yml --tags="remove"
+```
+
+ <font size=3>*重要提示：*</font>
+
+- 如果**托管节点**有节点新增，由于 authorized_key 模块支持幂等，可以直接运行 tags 为 copy 的命令新增
+- 如果**托管节点**有节点减少，建议在减少节点前手工移除单个节点上的 authorized_keys 中关于管理主机的配置，或者使用 tags 为 remove 的命令全部移除，再重新复制
+- 如果**托管节点**故障重新换机，IP或域名解析地址保持不变，除了复制公钥操作外，还需要同步修改**管理主机** .ssh 目录中 known_hosts 文件，否则会报错
+- 在**托管节点**有变化时需要及时保存管理主机公私钥，以防止**管理主机**故障后无法恢复密钥和配置
+- 本小节可以参考 ansible-rsa-tool 工程
 
 ## 8、配置资产清单文件
 
+文件结构如下：
+
 ```ini
+.
+├── production
+│   └── hosts
+```
+
+```ini
+# file: production/hosts
 [sc_front]
 ansible-front
 
@@ -294,6 +361,67 @@ tc_server
 zb_server
 ```
 
-## 7、安装 nginx
+## 7、配置私钥登录
 
-## 8、配置 JAVA 环境
+目录结构：
+
+```ini
+.
+├── ansible.cfg
+├── production
+│   ├── group_vars
+│   │   └── all.yml
+│   └── hosts
+├── rsa_keys
+│   └── deploy@ansible-deploy-master.rsa
+```
+
+**ansible.cfg:**
+
+原因：当 ansible 第一次使用 ssh 进行托管节点连接时，由于本机的 known_hosts 文件中没有对应节点的 fingerprint key 串，会提示输入 yes 进行确认后再将 key 字符串加入到  ~/.ssh/known_hosts 文件中。
+解决方案： 设置 ansible.cfg 配置文件，将 host_key_checking 设置为 False。
+
+```ini
+# file: ansible.cfg
+[defaults]
+host_key_checking = False
+```
+
+**all.yml：**
+
+all.yml 文件中指定的变量对全组生效，在文件中可以配置所有托管节点的连接参数。
+具体细节内容可以参考第十四章。
+
+```yml
+---
+# file: production/group_vars/all.yml
+ansible_user: deploy
+ansible_ssh_private_key_file: ./rsa_keys/deploy@ansible-deploy-master.rsa
+```
+
+**deploy@ansible-deploy-master.rsa:**
+
+在本章 7、配置管理主机免密登录章节中使用 ssh-keygen 命令产生的私钥文件（id_rsa）。
+私钥文件建议统一规范化命名，方便后期管理。
+命名格式：用户@IP地址或域名.rsa
+
+***特别注意：***
+rsa 文件权限只能为当前用户读和写，如果文件权限不正确，ansible 执行命令会报错，可以使用以下命令更改文件权限：
+
+```shell
+chmod 600 deploy@ansible-deploy-master.rsa
+```
+
+## 8、安装 Nginx
+
+## 9、安装 JDK
+
+## 10、部署 ansible front
+
+## 11、部署 ansible server
+
+## 12、部署 ansible server admin
+
+## 参考资料
+
+- [authorized_key 模块](https://docs.ansible.com/ansible/latest/modules/authorized_key_module.html#authorized-key-module)

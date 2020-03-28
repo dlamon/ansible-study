@@ -207,7 +207,7 @@ docker run --privileged -itd --name ansible-deploy-master -p 20022:22 --network 
 搭建前端应用服务器容器：
 
 ```shell
-docker run --privileged -itd --name ansible-front -p 20080:80 --network ansible-example centos:deploy
+docker run --privileged -itd --name ansible-front -p 20080:20080 --network ansible-example centos:deploy
 ```
 
 搭建后端服务容器：

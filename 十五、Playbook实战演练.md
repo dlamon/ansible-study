@@ -414,6 +414,10 @@ chmod 600 deploy@ansible-deploy-master.rsa
 
 ## 8、安装 Nginx
 
+```shell
+ansible-playbook -i production webservers.yml --ask-become-pass
+```
+
 ## 9、安装 JDK
 
 ## 10、部署 ansible front

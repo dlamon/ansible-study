@@ -81,6 +81,15 @@ docker-compose up -d
 
 ## 3、部署文件服务器
 
+创建 file-server 文件夹，其中目录结构如下：
+
+```ini
+.
+|-- nginx.conf
+|-- docker-compose.yml
+|-- site
+```
+
 docker-compose.yml 文件内容如下：
 
 ```yml
